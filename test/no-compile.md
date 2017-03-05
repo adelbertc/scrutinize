@@ -1,6 +1,6 @@
 # Hello
 
-```haskell
+```{ .haskell .tut }
 head [1,2,3
 ```
 

@@ -1,6 +1,6 @@
 # Hello
 
-```haskell
+```{ .haskell .tut }
 x = head [1,2,3]
 ```
 
@@ -10,5 +10,5 @@ This is a paragraph.
 myFunc :: Int -> String
 myFunc = show
 
-y = fmap show [1,2,3]
+y = fmap myFunc [1,2,3]
 ```

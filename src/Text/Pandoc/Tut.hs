@@ -8,9 +8,12 @@ import System.IO.Temp (openTempFile)
 import Text.Pandoc
 import Text.Pandoc.Walk (query)
 
+shouldCheck :: [String] -> Bool
+shouldCheck attrs = ("haskell" `elem` attrs) && ("tut" `elem` attrs)
+
 -- Extract Haskell code from the block
 codeOf :: Block -> [String]
-codeOf (CodeBlock (_, attrs, _) contents) = [contents | "haskell" `elem` attrs]
+codeOf (CodeBlock (_, attrs, _) contents) = [contents | shouldCheck attrs]
 codeOf _ = []
 
 -- Extract Haskell code from the document
