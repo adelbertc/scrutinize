@@ -10,13 +10,13 @@ documentation tool.
     Hello
     =====
 
-    ``` {.haskell}
+    ``` {.haskell .tut}
     x = head [1,2,3]
     ```
 
     This is a paragraph.
 
-    ``` {.haskell}
+    ``` {.haskell .tut}
     myFunc :: Int -> String
     myFunc = show
 
