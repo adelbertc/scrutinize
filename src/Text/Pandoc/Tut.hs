@@ -7,7 +7,7 @@ import System.Directory (getTemporaryDirectory, removeFile)
 import System.IO (Handle, hClose, hPutStrLn)
 import System.IO.Temp (openTempFile)
 import Text.Pandoc
-import Text.Pandoc.Lines
+import qualified Text.Pandoc.Lines as L
 import Text.Pandoc.Walk (query)
 
 shouldCheck :: [String] -> Bool
@@ -21,15 +21,15 @@ codeOf _ = []
 -- Shuffle the imports to the top of the file
 -- We do this because we'd like to have imports local to slides
 -- but Haskell does not like imports in the middle of the file
-shuffleImports :: Lines -> [String]
-shuffleImports = shuffle . foldr go ([], []) . getLines
+shuffleImports :: L.Lines -> [String]
+shuffleImports = shuffle . foldr go ([], []) . L.getLines
   where shuffle (imports, rest) = imports ++ rest
 
         go str (imports, rest) = if "import " `isPrefixOf` str then (str : imports, rest) else (imports, str : rest)
 
 -- Extract Haskell code from the document
-extractCode :: Pandoc -> Lines
-extractCode = linesMany . query codeOf
+extractCode :: Pandoc -> L.Lines
+extractCode = foldMap L.lines . query codeOf
 
 -- Pretty print errors
 prettyError :: InterpreterError -> String
