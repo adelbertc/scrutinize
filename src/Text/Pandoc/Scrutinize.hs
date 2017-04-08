@@ -1,4 +1,4 @@
-module Text.Pandoc.Tut where
+module Text.Pandoc.Scrutinize where
 
 import Data.List (isPrefixOf)
 import Language.Haskell.Interpreter
@@ -7,7 +7,7 @@ import System.Directory (getTemporaryDirectory, removeFile)
 import System.IO (Handle, hClose, hPutStrLn)
 import System.IO.Temp (openTempFile)
 import Text.Pandoc
-import qualified Text.Pandoc.Lines as L
+import qualified Text.Pandoc.Scrutinize.Lines as L
 import Text.Pandoc.Walk (query)
 
 shouldCheck :: [String] -> Bool
@@ -53,5 +53,5 @@ loadCode pandoc filePath handle = do
 typeCheckCode :: Pandoc -> IO Pandoc
 typeCheckCode pandoc = do
   tmpDir <- getTemporaryDirectory
-  (filePath, handle) <- openTempFile tmpDir "TutPandocTemp.hs"
+  (filePath, handle) <- openTempFile tmpDir "ScrutinizePandocTemp.hs"
   loadCode pandoc filePath handle

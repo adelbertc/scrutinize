@@ -1,6 +1,6 @@
 module Main where
 
-import Text.Pandoc.Tut
+import Text.Pandoc.Scrutinize
 import Text.Pandoc.JSON
 
 main :: IO ()
