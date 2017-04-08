@@ -1,4 +1,4 @@
-# tut-pandoc
+# scrutinize
 A [pandoc](http://pandoc.org/) filter in the spirit of the Scala [tut](https://github.com/tpolecat/tut)
 documentation tool.
 

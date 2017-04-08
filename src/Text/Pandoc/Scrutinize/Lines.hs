@@ -1,4 +1,4 @@
-module Text.Pandoc.Lines(Lines, getLines, lines) where
+module Text.Pandoc.Scrutinize.Lines(Lines, getLines, lines) where
 
 import Data.Semigroup
 import Prelude hiding (lines)
